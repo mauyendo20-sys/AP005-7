@@ -1,13 +1,11 @@
-from machine import Pin, ADC, PWM
-import time
+from machine import Pin, PWM, ADC
+from time import sleep
 
-pot = ADC(Pin(4))
-pot.atten(ADC.ATTN_11DB)
-
-led_pwm = PWM(Pin(2), freq=1000)
+led_pwm = PWM(Pin(15), freq=1000)
+potenciometro = ADC(Pin(34))
+potenciometro.atten(ADC.ATTN_11DB)
 
 while True:
-    lectura = pot.read()
-    duty = int((lectura / 4095) * 1023)
-    led_pwm.duty(duty)
-    time.sleep(0.02)
+    valor_pot = potenciometro.read_u16()
+    led_pwm.duty_u16(valor_pot)
+    sleep(0.05)
