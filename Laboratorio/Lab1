@@ -1,8 +1,15 @@
 from machine import Pin
 import time
 
-led = Pin(2, Pin.OUT)
+led = Pin(8, Pin.OUT)
 
-led.value(1)
-time.sleep(2)
-led.value(0)
+print("Iniciando el ciclo...")
+
+while True:
+    print("LED Encendido")
+    led.value(1)
+    time.sleep(1)
+    
+    print("LED Apagado")
+    led.value(0)
+    time.sleep(1)
