@@ -1,0 +1,97 @@
+#################LISTAS####################
+###########################################
+my_lista = ['Rojo', 'Azul', 'Amarillo', 'Naranja', 'Violeta', 'Verde']#Se crea una lista con Strings
+#input()
+print(my_lista)#Escribe la lista, tal cual como se creo
+print(type(my_lista))#Escribe el tipo de dato (lista)
+print(my_lista[2])#Escribe el tercer elemento de la lista
+
+print("my_lista size: ", len(my_lista))#Len cuenta cuantos valores tenemos en la lista (6)
+print(my_lista[0:2])#Escribe el primer elemento y el tercero de la lista
+print(my_lista[:2])#Lo mismo del anterior pero con espacio
+
+my_lista.append('Blanco')#Agrega elemento al final de la lista
+print(my_lista)#Escribira la lista pero con el nuevo agregado
+
+my_lista.insert(3, 'Negro')#Inserta el nuevo elemento negro en la posición 3 donde anteriormente estaba el naranja, y el naranja pasa a ser el 4
+print(my_lista)#Escribira la lista con la anterior modificación
+
+my_lista.extend(['Marron', 'Gris'])#Concatena a otra lista
+print(my_lista)#Incluira al final de la lista anterior los 2 nuevos elementos
+
+print(my_lista.index('Azul'))#Pone el valor donde se encuentra el azul 1
+
+my_lista.remove('Magenta')#No hay magenta (Error)
+my_lista.remove('Marron')#Quita el marron
+print(my_lista)#Imprime la lista pero sin el marron
+
+my_lista.insert(8, 'Marron')#Pone el marron en la octava posicion y cambia el gris
+print(my_lista)#Escribe la lista con la nueva modificacion
+
+print(my_lista.pop())#Quita el ultimo elemento de la lista y escribe cual fue dicho elemento
+size = len(my_lista)#Pone la variable "Size" para que tome el valor de la cantidad de elementos de la lista
+print("size = ", size)#Escribe "Size =" y el valor de la lista
+#print(my_lista.pop(size))
+
+my_lista_3 = my_lista * 3#Crea una lista llamda my lista 3 igual a la anterior pero repetida 3 veces seguidas
+print("my_lista_3: ", my_lista_3)#Escribe "My lista 3 y toda la lista con todos los elementos
+
+print("Sort:")#Escribe Sort:
+print()#Deja un espacio
+my_listaSort = my_lista.sort()#Iguala la lista con la ordenada
+print(my_listaSort)#Imprime my lista Sort, pero como esta vacio es un espacio
+
+my_NumList = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]#Genera una lista de numeros
+print("Ordering my_NumList: ")#Escribe Ordenando la lista de numeros
+my_NumList.sort()#Ordena la lista de numeros
+print(my_NumList)#Imprime la lista ya ordenada
+#OrderedLList = my_NumList.sort()
+#print(my_listaSort)
+
+#Ordenando lista de mayor a menor
+my_NumList.sort(reverse = True)#Pone la anterior lista en el orden contrario
+print("De menor a mayor: ", my_NumList)#Escribe de menor a mayor y al frente la lista que esta de mayor a menor
+
+
+#################TUPLAS####################
+###########################################
+# Corresponde a una estructura similar a las listas, la diferencia esta
+# en que no se pueden modificar una vez creadas, es decir que son inmutables:
+
+#Convertir una lista a tupla:
+print("###########################")#Escribe lo que esta entre comillas
+print("###########################")#Escribe lo que esta entre comillas
+print("###########################")#Escribe lo que esta entre comillas
+print("############TUPLAS#########")#Escribe lo que esta entre comillas
+my_tupla = tuple(my_lista)#Crea la anterior lista protegida
+print()#Espacio
+print()#Espacio
+print("my_tuple: ", my_tupla)#Escribe my tupla y al frente la lista protegida
+
+print(my_tupla[0])#Escribe el valor 0 que era rojo
+print(my_tupla[2])#Escribe el valor 2 que era amarillo
+
+#Evaluar si un elemento esta contenido en la tupla (Devuelve un valor booleano)
+print('Rojo' in my_tupla)#Como si esta escribe True
+print(my_tupla.count('Rojo'))#Imprime cuantas veces se repite el color rojo
+
+#Tupla con un solo elemento
+my_tupla_unitaria = ('Blanco')#Asigna una variable a un valor Blanco
+print(my_tupla_unitaria)#Imprime Blanco
+
+#Empaquetado de tupla, tupla sin parentesis
+my_tupla = 'Gaspar', 5, 8, 1999#Crea una tupla a pesar de no poner los parentesis
+print(my_tupla)#Imprime los 4 elementos
+
+#Desempaquetado de tupla, se guardan los valores en orden de las variables
+nombre, dia, mes, año = my_tupla#Encapsula cada uno de los elementos y los pone en una variable independiente
+print(nombre)#Escribe Gaspar
+print(dia)#Escribe 5
+print(mes)#Escribe 8
+print(año)#Escribe 1999
+
+print("Nombre: ", nombre, " - Dia:", dia, " - Mes: ", mes, "- Año: ", año)#Escribe ordenamente los anteriores elementos
+
+#Convertir una tupla en una lista
+my_lista2=list(my_tupla)#Convierte my_tupla en una lista
+print(my_lista2)#Imprime la lista
