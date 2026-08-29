@@ -1,0 +1,108 @@
+#################DICTIONARIES 2############
+###########################################
+# #### Get A Key
+building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}#Crea un diccionario con edificios y sus respectivas alturas
+print(building_heights["Burj Khalifa"])#Imprime el valor asociado a la llave "Burj Khalifa" (828)
+print(building_heights["Ping An"])#Imprime el valor asociado a la llave "Ping An" (599)
+
+zodiac_elements = {"water": ["Cancer", "Scorpio", "Pisces"], "fire": ["Aries", "Leo", "Sagittarius"], "earth": ["Taurus", "Virgo", "Capricorn"], "air":["Gemini", "Libra", "Aquarius"]}#Crea un diccionario con elementos y sus listas de signos del zodiaco
+print(zodiac_elements["earth"])#Imprime la lista de los signos de tierra
+print(zodiac_elements["fire"])#Imprime la lista de los signos de fuego
+
+# ## Get an Invalid Key
+building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}#Crea el diccionario de alturas de edificios
+# print(building_heights["Landmark 81"])#Generaria error porque la llave no existe en el diccionario
+
+# ##One way to avoid this error is to first check if the key exists in the dictionary:
+key_to_check = "Landmark 81"#Asigna a una variable el nombre del edificio a buscar
+
+if key_to_check in building_heights:#Evalua si la llave existe dentro del diccionario
+  print(building_heights["Landmark 81"])#Si llega a existir, imprime su valor (En este caso no se ejecuta)
+
+zodiac_elements = {"water": ["Cancer", "Scorpio", "Pisces"], "fire": ["Aries", "Leo", "Sagittarius"], "earth": ["Taurus", "Virgo", "Capricorn"], "air":["Gemini", "Libra", "Aquarius"]}#Crea el diccionario de signos otra vez
+
+zodiac_elements["energy"] = "Not a Zodiac element"#Agrega una nueva llave "energy" con su respectivo valor al diccionario
+
+if "energy" in zodiac_elements:#Verifica si la llave "energy" ya se encuentra en el diccionario
+  print(zodiac_elements["energy"])#Como si esta, imprime su valor directamente
+
+# ##Safely Get a Key
+building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}#Crea nuevamente el diccionario de edificios
+
+building_heights.get("Shanghai Tower")#Obtiene el valor de forma segura usando la funcion get retornando 632
+building_heights.get("My House")#Al no existir la llave, la funcion retorna None en lugar de generar un error
+
+user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}#Crea un diccionario de IDs de los diferentes usuarios
+user_ids.get("teraCoder")#Obtiene el ID del usuario "teraCoder" de forma segura sin imprimirlo
+
+if user_ids.get("teraCoder") == None:#Condicional para revisar si no existe el usuario "teraCoder"
+   tc_id = 1000#Le asigna un ID por defecto en caso de no existir
+else:#Si por el contrario el usuario si existe
+   tc_id = user_ids.get("teraCoder")#Asigna a la variable el ID obtenido desde el diccionario
+
+print(tc_id)#Imprime el valor final de la variable despues de la validacion
+
+if user_ids.get("superStackSmash") == None:#Revisa si un usuario inventado no existe y retorna None
+     stack_id = 100000#Al confirmar que no existe, le asigna este valor por defecto a la variable
+
+print(stack_id)#Imprime el ID asignado por defecto para el usuario faltante
+
+# ###Delete a Key
+raffle = {223842: "Teddy Bear", 872921: "Concert Tickets", 320291: "Gift Basket", 412123: "Necklace", 298787: "Pasta Maker"}#Crea diccionario numerico de un sorteo con los premios
+print(raffle.pop(320291, "No Prize"))#Elimina la llave 320291, imprime el premio y si no existe imprime "No Prize"
+print(raffle)#Imprime el diccionario resultante sin el premio recien eliminado
+print(raffle.pop(100000, "No Prize"))#Intenta eliminar una llave que no existe y al fallar retorna "No Prize"
+print(raffle)#Imprime el diccionario intacto ya que no se elimino nada
+print(raffle.pop(872921, "No Prize"))#Elimina la llave 872921 y retorna cual era su respectivo premio
+print(raffle)#Imprime el diccionario ya con las dos eliminaciones totales
+
+available_items = {"health potion": 10, "cake of the cure": 5, "green elixir": 20, "strength sandwich": 25, "stamina grains": 15, "power stew": 30}#Crea diccionario de consumibles disponibles y sus puntos
+health_points = 20#Inicializa los puntos de vida totales en 20
+
+health_points += available_items.pop("stamina grains", 0)#Elimina "stamina grains" del diccionario y le suma su valor a los puntos de vida
+health_points += available_items.pop("power stew", 0)#Elimina "power stew" del diccionario y tambien le suma su valor a los puntos de vida
+health_points += available_items.pop("mystic bread", 0)#Intenta eliminar "mystic bread", como no existe suma 0 a la vida
+
+print(available_items)#Imprime los elementos que quedaron disponibles despues de los retiros
+print(health_points)#Imprime el total numerico de los puntos de vida acumulados
+
+# ##Get All Keys
+test_scores = {"Grace":[80, 72, 90], "Jeffrey":[88, 68, 81], "Sylvia":[80, 82, 84], "Pedro":[98, 96, 95], "Martin":[78, 80, 78], "Dina":[64, 60, 75]}#Crea diccionario relacionando estudiantes con sus listas de notas
+print(list(test_scores))#Imprime unicamente las llaves (nombres) transformadas en una lista plana
+
+for student in test_scores.keys():#Inicia un ciclo que va recorriendo todas las llaves del diccionario
+ print(student)#Imprime directamente el nombre del estudiante en cada paso del ciclo
+
+user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}#Crea diccionario de usuarios de nuevo
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}#Crea diccionario con la cantidad de ejercicios por tema
+
+users = user_ids.keys()#Obtiene solo las llaves del diccionario de usuarios y las guarda en "users"
+lessons = num_exercises.keys()#Obtiene solo las llaves del diccionario de ejercicios y las guarda en "lessons"
+
+print(users)#Imprime el conjunto de las llaves de los usuarios
+print(lessons)#Imprime el conjunto de las llaves de los ejercicios (temas)
+
+# ##Get All Values
+test_scores = {"Grace":[80, 72, 90], "Jeffrey":[88, 68, 81], "Sylvia":[80, 82, 84], "Pedro":[98, 96, 95], "Martin":[78, 80, 78], "Dina":[64, 60, 75]}#Crea de nuevo el diccionario de notas
+
+for score_list in test_scores.values():#Inicia un ciclo que recorre unicamente los valores sin importar la llave
+ print(score_list)#Imprime la lista de notas de cada estudiante por separado
+
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}#Crea diccionario de cantidad de ejercicios
+
+total_exercises = 0#Inicializa el contador para la suma de ejercicios en 0
+
+for exercises in num_exercises.values():#Inicia ciclo recorriendo unicamente los valores numericos del diccionario
+  total_exercises += exercises#Suma cada valor numerico extraido al contador total
+print(total_exercises)#Imprime la sumatoria total final de todos los ejercicios de todos los temas
+
+# ##Get All Items
+biggest_brands = {"Apple": 184, "Google": 141.7, "Microsoft": 80, "Coca-Cola": 69.7, "Amazon": 64.8}#Crea diccionario de grandes marcas y su valor estimado
+
+for company, value in biggest_brands.items():#Recorre el diccionario extrayendo tanto la llave como el valor en simultaneo
+ print(company + " has a value of " + str(value) + " billion dollars. ")#Imprime una oracion completa concatenando la llave (marca) y el valor numerico
+
+pct_women_in_occupation = {"CEO": 28, "Engineering Manager": 9, "Pharmacist": 58, "Physician": 40, "Lawyer": 37, "Aerospace Engineer": 9}#Crea diccionario de profesiones y el respectivo porcentaje
+
+for occupation, percentage in pct_women_in_occupation.items():#Recorre el diccionario obteniendo la llave (profesion) y el valor (porcentaje) al mismo tiempo
+  print("Women make up " + str(percentage) + " percent of " + occupation + "s.")#Imprime la oracion final utilizando los dos datos obtenidos
