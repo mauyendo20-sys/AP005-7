@@ -1,0 +1,71 @@
+#################DICTIONARIES 1############
+###########################################
+sensors =  {"living room": 21, "kitchen": 23, "bedroom": 20, "pantry": 22}#Crea un diccionario con las habitaciones y sus sensores
+num_cameras = {"backyard": 6,  "garage": 2, "driveway": 1}#Crea un diccionario con las zonas y el numero de camaras
+
+print(sensors)#Imprime el diccionario de sensores
+print(num_cameras)#Imprime el diccionario de camaras
+translations = {"mountain": "orod", "bread": "bass", "friend": "mellon", "horse": "roch"}#Crea un diccionario de traducciones
+print(translations)#Imprime el diccionario de traducciones
+
+##Verifiying an error:
+# powers = {[1, 2, 4, 8, 16]: 2, [1, 3, 9, 27, 81]: 3}#Genera error porque las listas son mutables y no pueden ser llaves
+# print(powers)#Comentado para evitar el error en la ejecucion
+
+children = {"von Trapp": ["Johannes", "Rosmarie", "Eleonore"], "Corleone": ["Sonny", "Fredo", "Michael"]}#Crea un diccionario con listas como valores
+print(children)#Imprime el diccionario de los hijos
+
+my_empty_dictionary = {}#Crea un diccionario vacio
+print(my_empty_dictionary)#Imprime el diccionario vacio
+
+menu = {"oatmeal": 3, "avocado toast": 6, "carrot juice": 5, "blueberry muffin": 2}#Crea un diccionario de un menu con precios
+print("Before: ", menu)#Escribe "Before: " y el diccionario original
+menu["cheesecake"] = 8#Agrega un nuevo elemento "cheesecake" al menu con valor de 8
+print("After", menu)#Escribe "After" y el diccionario con el nuevo elemento agregado
+
+animals_in_zoo = {"dinosaurs": 0}#Crea el diccionario de animales con dinosaurios en 0
+animals_in_zoo = {"horses": 2}#Sobrescribe el diccionario anterior dejando solo caballos en 2
+print(animals_in_zoo)#Imprime el diccionario actual de animales con la sobrescritura
+
+##Add multiple keys
+sensors = {"living room": 21, "kitchen": 23, "bedroom": 20}#Crea un diccionario de sensores inicial
+print("Before", sensors)#Imprime el estado inicial del diccionario
+
+#If we wanted to add 3 new rooms, we could use:
+sensors.update({"pantry": 22, "guest room": 25, "patio": 34})#Agrega tres nuevos elementos al diccionario al mismo tiempo usando update
+print("After", sensors)#Imprime el diccionario con los tres elementos nuevos agregados
+
+user_ids = {"teraCoder": 9018293, "proProgrammer": 119238}#Crea un diccionario de usuarios y sus respectivos IDs
+print(user_ids)#Imprime el diccionario de usuarios
+user_ids.update({"theLooper": 138475, "stringQueen": 85739})#Agrega dos nuevos usuarios con sus IDs al diccionario
+print(user_ids)#Imprime el diccionario con los nuevos usuarios integrados
+
+## Overwrite Values ##
+menu = {"oatmeal": 3, "avocado toast": 6, "carrot juice": 5, "blueberry muffin": 2}#Crea el diccionario de menu original
+print("Before: ", menu)#Imprime el menu inicial
+menu["oatmeal"] = 5#Modifica el valor del elemento existente "oatmeal" pasandolo a 5
+print("After", menu)#Imprime el menu con el valor de la avena modificado
+
+oscar_winners = {"Best Picture": "La La Land", "Best Actor": "Casey Affleck", "Best Actress": "Emma Stone", "Animated Feature": "Zootopia"}#Crea diccionario de ganadores de premios
+print("Before", oscar_winners)#Imprime el diccionario inicial de los premios
+print()#Deja un espacio
+oscar_winners.update({"Supporting Actress": "Viola Davis"})#Agrega una nueva categoria al diccionario con update
+print("After1", oscar_winners)#Imprime el diccionario con la nueva adicion
+print()#Deja un espacio
+oscar_winners["Best Picture"] = "Moonlight"#Modifica el valor de la llave "Best Picture" reemplazando la pelicula
+print("After2", oscar_winners)#Imprime el diccionario con la pelicula corregida
+
+###Dict Comprehensions
+names = ['Jenny', 'Alexus', 'Sam', 'Grace']#Crea una lista de nombres
+heights = [61, 70, 67, 64]#Crea una lista de estaturas
+
+songs = ["Like a Rolling Stone", "Satisfaction", "Imagine", "What's Going On", "Respect", "Good Vibrations"]#Crea una lista de canciones
+playcounts = [78, 29, 44, 21, 89, 5]#Crea una lista de reproducciones
+plays = {key:value for key, value in zip(songs, playcounts)}#Crea un diccionario uniendo ambas listas (canciones como llaves y reproducciones como valores)
+print(plays)#Imprime el diccionario creado a partir del emparejamiento
+plays.update({"Purple Haze": 1})#Agrega una nueva cancion al diccionario general
+plays.update({"Respect": 94})#Actualiza el valor de reproducciones de la cancion "Respect" que ya existia
+print("After: ", plays)#Imprime el diccionario con la nueva cancion y el valor actualizado
+
+library = {"The Best Songs": plays, "Sunday Feelings": {}}#Crea un diccionario anidado donde un valor es el diccionario anterior y el otro esta vacio
+print(library)#Imprime el diccionario principal que contiene al otro por dentro
