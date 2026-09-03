@@ -4,19 +4,25 @@ import time
 led = Pin(5, Pin.OUT)
 
 # Primera vez
-led.value(1)      
+led.value(1)
+print("LED prendido")
 time.sleep(1)     
-led.value(0)      
+led.value(0)
+print("LED apagado")
 time.sleep(1)    
 
 # Segunda vez
 led.value(1)
+print("LED prendido")
 time.sleep(1)
 led.value(0)
+print("LED apagado")
 time.sleep(1)
 
 # Tercera vez
 led.value(1)
+print("LED prendido")
 time.sleep(1)
 led.value(0)
+print("LED apagado")
 time.sleep(0.05)
