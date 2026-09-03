@@ -4,14 +4,14 @@ import time
 led = PWM(Pin(5))
 led.freq(1000)  
 
-
 pot = ADC(Pin(4))
 pot.atten(ADC.ATTN_11DB) 
 
 while True:
-
     valor = pot.read_u16() 
-    
     led.duty_u16(valor)
+    
+    porcentaje = (valor / 65535) * 100
+    print(f"Valor potenciómetro: {valor} | Intensidad LED: {porcentaje:.1f}%")
     
     time.sleep(0.05)
