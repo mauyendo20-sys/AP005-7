@@ -1,28 +1,30 @@
-from machine import Pin
-import time
+const int led = 5;
 
-led = Pin(5, Pin.OUT)
+void setup() {
+  pinMode(led, OUTPUT);
+  Serial.begin(115200); 
 
-# Primera vez
-led.value(1)
-print("LED prendido")
-time.sleep(1)     
-led.value(0)
-print("LED apagado")
-time.sleep(1)    
+  digitalWrite(led, HIGH);
+  Serial.println("LED prendido");
+  delay(1000);
+  digitalWrite(led, LOW);
+  Serial.println("LED apagado");
+  delay(1000);
 
-# Segunda vez
-led.value(1)
-print("LED prendido")
-time.sleep(1)
-led.value(0)
-print("LED apagado")
-time.sleep(1)
+  digitalWrite(led, HIGH);
+  Serial.println("LED prendido");
+  delay(1000);
+  digitalWrite(led, LOW);
+  Serial.println("LED apagado");
+  delay(1000);
 
-# Tercera vez
-led.value(1)
-print("LED prendido")
-time.sleep(1)
-led.value(0)
-print("LED apagado")
-time.sleep(0.05)
+  digitalWrite(led, HIGH);
+  Serial.println("LED prendido");
+  delay(1000);
+  digitalWrite(led, LOW);
+  Serial.println("LED apagado");
+  delay(50);
+}
+
+void loop() {
+}
