@@ -2,29 +2,15 @@ const int led = 5;
 
 void setup() {
   pinMode(led, OUTPUT);
-  Serial.begin(115200); 
-
-  digitalWrite(led, HIGH);
-  Serial.println("LED prendido");
-  delay(1000);
-  digitalWrite(led, LOW);
-  Serial.println("LED apagado");
-  delay(1000);
-
-  digitalWrite(led, HIGH);
-  Serial.println("LED prendido");
-  delay(1000);
-  digitalWrite(led, LOW);
-  Serial.println("LED apagado");
-  delay(1000);
-
-  digitalWrite(led, HIGH);
-  Serial.println("LED prendido");
-  delay(1000);
-  digitalWrite(led, LOW);
-  Serial.println("LED apagado");
-  delay(50);
+  Serial.begin(115200);
 }
 
 void loop() {
+  digitalWrite(led, HIGH);
+  Serial.println("LED prendido");
+  delay(500);
+  
+  digitalWrite(led, LOW);
+  Serial.println("LED apagado");
+  delay(500);
 }
