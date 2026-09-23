@@ -72,7 +72,7 @@ def filtrar_precio():
         print("\nRegistros en el rango:")
         print(resultado.to_string(index=False))
 
-
+# Sebastián Díaz Cifuentes
 def mayor_menor():
     mayor = df["price usd"].max()
     menor = df["price usd"].min()
@@ -129,7 +129,7 @@ def tipos_colores():
     print("\nCOLORES")
     print(sorted(df["color"].unique()))
 
-
+# Sebastián Díaz Cifuentes
 def ordenar_y_columna():
     categorias = []
 
@@ -155,7 +155,7 @@ def ordenar_y_columna():
     print("\nNueva columna creada:")
     print(df[["type", "color", "price usd", "categoria precio"]].head(10).to_string(index=False))
 
-
+# Sebastián Díaz Cifuentes
 while True:
     print("\n==============================")
     print("PROGRAMA DE FRUTAS")
