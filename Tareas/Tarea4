@@ -1,1 +1,199 @@
+import pandas as pd
+# Sebastián Díaz Cifuentes
+df = pd.read_csv("Fruits.csv")
 
+opciones = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+
+
+def informacion_general():
+    print("\nINFORMACION GENERAL")
+    print("Filas:", len(df))
+    print("Columnas:", len(df.columns))
+    print("\nColumnas:", df.columns.tolist())
+    print("\nTipos de datos:")
+    print(df.dtypes)
+    print("\nPrimeros registros:")
+    print(df.head())
+
+    resumen = {
+        "filas": len(df),
+        "columnas": len(df.columns),
+        "precio promedio": df["price usd"].mean()
+    }
+
+    print("\nResumen:")
+    print(resumen)
+
+
+def buscar_fruta():
+    print("\nTIPOS DE FRUTA DISPONIBLES")
+    print(sorted(df["type"].unique()))
+
+    fruta = input("\nEscribe la fruta: ")
+
+    resultado = df[df["type"].str.lower() == fruta.lower()]
+
+    if resultado.empty:
+        print("No se encontro esa fruta.")
+    else:
+        print("\nRegistros encontrados:")
+        print(resultado.to_string(index=False))
+
+
+def buscar_color():
+    print("\nCOLORES DISPONIBLES")
+    print(sorted(df["color"].unique()))
+
+    color = input("\nEscribe el color: ")
+
+    resultado = df[df["color"].str.lower() == color.lower()]
+
+    if resultado.empty:
+        print("No se encontro ese color.")
+    else:
+        print("\nRegistros encontrados:")
+        print(resultado.to_string(index=False))
+
+
+def filtrar_precio():
+    precio1 = float(input("\nPrecio minimo: "))
+    precio2 = float(input("Precio maximo: "))
+
+    rango = (precio1, precio2)
+
+    resultado = df[
+        (df["price usd"] >= rango[0]) &
+        (df["price usd"] <= rango[1])
+    ]
+
+    if resultado.empty:
+        print("No hay registros en ese rango.")
+    else:
+        print("\nRegistros en el rango:")
+        print(resultado.to_string(index=False))
+
+
+def mayor_menor():
+    mayor = df["price usd"].max()
+    menor = df["price usd"].min()
+
+    print("\nPRECIO MAYOR")
+    print(df[df["price usd"] == mayor].to_string(index=False))
+
+    print("\nPRECIO MENOR")
+    print(df[df["price usd"] == menor].to_string(index=False))
+
+
+def promedio():
+    promedio = df["price usd"].mean()
+    print("\nPrecio promedio:", round(promedio, 2), "USD")
+
+
+def estadisticas():
+    print("\n1. Estadisticas de una fruta")
+    print("2. Estadisticas de un color")
+    print("3. Promedio por tipo de fruta")
+
+    opcion = input("\nElige una opcion: ")
+
+    if opcion == "1":
+        fruta = input("Escribe la fruta: ")
+        resultado = df[df["type"].str.lower() == fruta.lower()]
+
+        if resultado.empty:
+            print("No se encontro esa fruta.")
+        else:
+            print(resultado["price usd"].describe())
+
+    elif opcion == "2":
+        color = input("Escribe el color: ")
+        resultado = df[df["color"].str.lower() == color.lower()]
+
+        if resultado.empty:
+            print("No se encontro ese color.")
+        else:
+            print(resultado["price usd"].describe())
+
+    elif opcion == "3":
+        resultado = df.groupby("type")["price usd"].mean().sort_values()
+        print(resultado)
+
+    else:
+        print("Opcion no valida.")
+
+
+def tipos_colores():
+    print("\nTIPOS DE FRUTA")
+    print(sorted(df["type"].unique()))
+
+    print("\nCOLORES")
+    print(sorted(df["color"].unique()))
+
+
+def ordenar_y_columna():
+    categorias = []
+
+    for precio in df["price usd"]:
+        if precio >= 2.50:
+            categorias.append("Alto")
+        else:
+            categorias.append("Bajo")
+
+    df["categoria precio"] = categorias
+
+    orden = input("\nEscribe A para menor a mayor o D para mayor a menor: ")
+
+    if orden.lower() == "a":
+        resultado = df.sort_values("price usd")
+        print(resultado.to_string(index=False))
+    elif orden.lower() == "d":
+        resultado = df.sort_values("price usd", ascending=False)
+        print(resultado.to_string(index=False))
+    else:
+        print("Opcion no valida.")
+
+    print("\nNueva columna creada:")
+    print(df[["type", "color", "price usd", "categoria precio"]].head(10).to_string(index=False))
+
+
+while True:
+    print("\n==============================")
+    print("PROGRAMA DE FRUTAS")
+    print("==============================")
+    print("1. Mostrar informacion general")
+    print("2. Buscar una fruta")
+    print("3. Buscar por color")
+    print("4. Filtrar por rango de precios")
+    print("5. Mostrar precio mayor y menor")
+    print("6. Mostrar precio promedio")
+    print("7. Mostrar estadisticas")
+    print("8. Mostrar tipos y colores")
+    print("9. Ordenar datos y crear columna")
+    print("10. Salir")
+
+    opcion = input("\nElige una opcion: ")
+
+    if opcion in opciones:
+        if opcion == "1":
+            informacion_general()
+        elif opcion == "2":
+            buscar_fruta()
+        elif opcion == "3":
+            buscar_color()
+        elif opcion == "4":
+            filtrar_precio()
+        elif opcion == "5":
+            mayor_menor()
+        elif opcion == "6":
+            promedio()
+        elif opcion == "7":
+            estadisticas()
+        elif opcion == "8":
+            tipos_colores()
+        elif opcion == "9":
+            ordenar_y_columna()
+        elif opcion == "10":
+            print("Programa terminado.")
+            break
+    else:
+        print("Opcion no valida.")
